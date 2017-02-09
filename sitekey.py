@@ -1,5 +1,3 @@
-from flask import Flask, request, render_template
-import json
 from bs4 import BeautifulSoup
 import requests
 from urllib2 import urlopen
@@ -33,10 +31,12 @@ def getSitekey():
         print "Currently checking for sitekey on " + link
         if sitekeyDiv:
             print "\nFound Sitekey on " + link + "\n\n\n"
-            return sitekeyDiv[0]['data-sitekey']
+            print "Current Sitekey = " + sitekeyDiv[0]['data-sitekey']
+            break
+            
         else:
             continue
-    return "Sitekey Not Found"
+    print "Sitekey not found."
 
 if __name__ == "__main__":
     getSitekey()
